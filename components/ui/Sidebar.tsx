@@ -1,5 +1,7 @@
+'use client';
 import { MenuIcon } from "lucide-react";
 import NewDocumentButton from "./NewDocumentButton";
+import { useCollection } from "react-firebase-hooks/firestore";
 import {
   Sheet,
   SheetContent,
@@ -7,11 +9,34 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
+import { useUser } from "@clerk/nextjs";
 
 function Sidebar() {
-    const menuOptions = (
+    const { user} = useUser();
+
+    const [data, loading, error] = useCollection(
+        
+    );
+
+
+   const menuOptions = (
         <>
          <NewDocumentButton />
+
+         {/*My Documents  */}
+
+
+         {/* list...... */}
+
+
+
+         {/* shared with me */}
+
+
+
+         {/* list.... */}
+
+
         </>
     );
   return (
@@ -23,10 +48,8 @@ function Sidebar() {
         </SheetTrigger>
         <SheetContent side={"left"}>
           <SheetHeader>
-            <SheetTitle>{menuOptions}</SheetTitle>
-            <div>
-                {/* options */}
-            </div>
+            <SheetTitle>Menu</SheetTitle>
+            <div>{menuOptions}</div>
           </SheetHeader>
         </SheetContent>
       </Sheet>
